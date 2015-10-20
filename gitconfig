@@ -1,0 +1,58 @@
+[init]
+  templatedir = ~/.git_template
+[push]
+  default = current
+[color]
+  ui = auto
+[alias]
+  aa = add --all
+  ap = add --patch
+  ca = commit --amend
+  ci = commit -v
+  co = checkout
+  co-pr = !sh -c 'git fetch origin pull/$1/head:pr/$1 && git checkout pr/$1' -
+  create-branch = !sh -c 'git push origin HEAD:refs/heads/$1 && git fetch origin && git branch --track $1 origin/$1 && cd . && git checkout $1' -
+  ctags = "!sh -c '[ -f .git/hooks/ctags ] || git init; .git/hooks/ctags' git-ctags"
+  current-branch = !sh -c 'git rev-parse --abbrev-ref HEAD' -
+  delete-branch = !sh -c 'git push origin :refs/heads/$1 && git branch -D $1' -
+  merge-branch = !git checkout master && git merge @{-1}
+  pr = !gh pull-request
+  rename-branch = !sh -c 'old=$(git current-branch) && git branch -m $old $1 && git push origin --set-upstream $1 && git push origin --delete $old' -
+  st = status
+  up = !git fetch origin && git rebase origin/master
+  ft = fetch
+  br = branch
+
+  #diff
+  df = diff
+  dfc = diff --cached
+  dfw = diff --color-words
+  dfwc = diff --color-words --cached
+
+  # log
+  l  = log --pretty=format:\"%h %ar\t(%an)\t: %s\" --date=short -20
+  lg  = log --pretty=format:\"%h %ar\t(%an)\t: %s\" --date=short -20 --graph
+  d = difftool
+[core]
+  editor = vim
+  pager = less -r
+  excludesfile = ~/.gitignore
+	autoCRLF = false
+[merge]
+  ff = only
+[commit]
+  template = ~/.gitmessage
+[fetch]
+  prune = true
+[include]
+  path = ~/.gitconfig.local
+[http]
+  sslVerify = false
+[user]
+	name = kazuki matsumoto
+	email = kazuki.matsumoto@vasily.jp
+[branch "master"]
+    merge = refs/heads/master
+    remote = origin
+[diff]
+  tool = vimdiff
