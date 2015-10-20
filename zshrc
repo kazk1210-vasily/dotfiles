@@ -14,11 +14,6 @@ fpath=(~/.zsh/completion $fpath)
 autoload -U compinit
 compinit
 
-# load custom executable functions
-for function in ~/.zsh/functions/*; do
-  source $function
-done
-
 # history settings
 setopt hist_ignore_all_dups inc_append_history
 HISTFILE=~/.zhistory
@@ -132,9 +127,3 @@ bindkey -v
 bindkey '^R' history-incremental-search-backward
 set blink-matching-paren on
 export KEYTIMEOUT=1
-
-# The next line updates PATH for the Google Cloud SDK.
-source '/extra/omatsu/google-cloud-sdk/path.zsh.inc'
-
-# The next line enables shell command completion for gcloud.
-#source '/extra/omatsu/google-cloud-sdk/completion.zsh.inc'
