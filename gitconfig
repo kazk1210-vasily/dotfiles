@@ -50,7 +50,7 @@
   sslVerify = false
 [user]
 	name = kazuki matsumoto
-	email = kazuki.matsumoto@vasily.jp
+	email = kazk1210@gmail.com
 [branch "master"]
     merge = refs/heads/master
     remote = origin
