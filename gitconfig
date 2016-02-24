@@ -56,3 +56,7 @@
     remote = origin
 [diff]
   tool = vimdiff
+[url "https://"]
+	insteadOf = git://
+[url "http://"]
+	insteadOf = git://
